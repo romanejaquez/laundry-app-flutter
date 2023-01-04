@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_icons_icons.dart';
-import 'package:laundry_app/helpers/utils.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -22,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     splashTimer = Timer(const Duration(seconds: 2), () {
-      GoRouter.of(context).go('/services');
+      GoRouter.of(context).go('/landing');
     });
 
   }
@@ -41,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Icon(
           LaundryIcons.logo,
           color: Colors.white,
-          size: 150
+          size: 100
         ),
       )
     );

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/utils.dart';
+import 'package:laundry_app/pages/landing_page.dart';
 import 'package:laundry_app/pages/main_page.dart';
 import 'package:laundry_app/pages/orders_page.dart';
+import 'package:laundry_app/pages/qrscanner_page.dart';
 import 'package:laundry_app/pages/quick_dropoff_page.dart';
 import 'package:laundry_app/pages/services_page.dart';
 import 'package:laundry_app/pages/settings_page.dart';
@@ -38,6 +40,16 @@ class LaundryApp extends StatelessWidget {
         parentNavigatorKey: Utils.rootNavigatorKey,
         path: '/splash',
         builder: (context, state) => const SplashPage(key: Key('splash screen')),
+      ),
+      GoRoute(
+        parentNavigatorKey: Utils.rootNavigatorKey,
+        path: '/landing',
+        builder: (context, state) => const LandingPage(key: Key('landing screen')),
+      ),
+      GoRoute(
+        parentNavigatorKey: Utils.rootNavigatorKey,
+        path: '/qrscanner',
+        builder: (context, state) => const QRScannerPage(key: Key('qr scanner screen')),
       ),
       ShellRoute(
         navigatorKey: Utils.mainPageNavigatorKey,
