@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_icons_icons.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
+import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/services_option_service.dart';
 import 'package:laundry_app/widgets/service_option_tile.dart';
 import 'package:laundry_app/widgets/services_step_indicator.dart';
@@ -24,7 +26,7 @@ class ServicesPage extends StatelessWidget {
         children: [
           const ServicesStepIndicator(),
           const Text('Select the Service',
-            style: LaundryStyles.mainHeaderTitleStyle
+            style: LaundryStyles.header1TitleStyle
           ),
           const SizedBox(height: 20),
           Expanded(
@@ -44,15 +46,17 @@ class ServicesPage extends StatelessWidget {
               elevation: 0,
               shadowColor: Colors.transparent
             ),
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(Utils.mainPageNavigatorKey.currentContext!).go('/quickdropoff');
+            },
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+                children: const [
                   Icon(Icons.dry_cleaning, size: 50),
-                  const SizedBox(width: 20),
+                  SizedBox(width: 20),
                   Expanded(
                     child: Text('Quick Drop-Off',
                       style: TextStyle(fontSize: 30)
@@ -62,7 +66,6 @@ class ServicesPage extends StatelessWidget {
               ),
             )
           ),
-          const SizedBox(height: 50),
         ],
       )
     );

@@ -37,9 +37,15 @@ class LaundryStyles {
     color: LaundryAppColors.mainBlue
   );
 
-  static const TextStyle mainHeaderTitleStyle = TextStyle(
+  static const TextStyle header1TitleStyle = TextStyle(
     fontSize: 50, 
     fontWeight: FontWeight.bold, 
+    color: LaundryAppColors.darkBlue
+  );
+
+  static const TextStyle header3TitleStyle = TextStyle(
+    fontSize: 30, 
+    fontWeight: FontWeight.normal, 
     color: LaundryAppColors.darkBlue
   );
 

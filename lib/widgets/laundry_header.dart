@@ -16,7 +16,7 @@ class LaundryHeader extends StatelessWidget {
       child: Row(
         children: [
           const Padding(
-            padding: EdgeInsets.only(left: 30, top: 15),
+            padding: EdgeInsets.only(left: 20, top: 15),
             child: Text('Wave Cleaners',
               style: LaundryStyles.headerTitleStyle
             )

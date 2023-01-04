@@ -11,7 +11,7 @@ class LaundryLeftNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 130,
+      width: 100,
       color: LaundryAppColors.mainBlue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -21,7 +21,7 @@ class LaundryLeftNav extends StatelessWidget {
             child: Icon(
               LaundryIcons.logo, 
               color: Colors.white, 
-              size: 50
+              size: 40
             ),
           ),
           Expanded(
