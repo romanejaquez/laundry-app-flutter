@@ -27,9 +27,9 @@ class Utils {
         route: '/orders'
       ),
       LaundryLeftNavTab(
-        label: 'Settings',
+        label: 'Quick Drop-Off',
         isSelected: false, 
-        route: '/settings'
+        route: '/quickdropoff'
       )
     ];
   }

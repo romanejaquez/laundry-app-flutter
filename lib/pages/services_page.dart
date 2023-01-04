@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
-import 'package:laundry_app/helpers/laundry_icons_icons.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/services_option_service.dart';
@@ -39,6 +38,7 @@ class ServicesPage extends StatelessWidget {
             )
           ),
           const SizedBox(height: 10),
+          /*
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: LaundryAppColors.darkBlue,
@@ -66,6 +66,7 @@ class ServicesPage extends StatelessWidget {
               ),
             )
           ),
+          */
         ],
       )
     );

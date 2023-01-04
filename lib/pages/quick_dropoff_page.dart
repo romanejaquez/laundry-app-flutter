@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
-import 'package:laundry_app/helpers/laundry_icons_icons.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
-import 'package:laundry_app/widgets/quickdropoff_row.dart';
+import 'package:laundry_app/widgets/quick_dropoff_row.dart';
 import 'package:provider/provider.dart';
 
 class QuickDropoffPage extends StatelessWidget {

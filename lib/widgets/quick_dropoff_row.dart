@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
-import 'package:laundry_app/helpers/laundry_icons_icons.dart';
 import 'package:laundry_app/models/quick_dropoff_order_item.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:provider/provider.dart';
@@ -26,13 +25,13 @@ class QuickDropoffRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 80,
-            height: 80,
+            width: 60,
+            height: 60,
             decoration: BoxDecoration(
               color: LaundryAppColors.mainBlue,
-              borderRadius: BorderRadius.circular(40)
+              borderRadius: BorderRadius.circular(30)
             ),
-            child: Icon(order.garment.icon, color: Colors.white, size: 40),
+            child: Icon(order.garment.icon, color: Colors.white, size: 30),
           ),
           Expanded(
             child: Consumer<QuickDropoffService>(
@@ -50,16 +49,16 @@ class QuickDropoffRow extends StatelessWidget {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            width: 80,
-                            height: 80,
+                            width: 60,
+                            height: 60,
                             decoration: BoxDecoration(
                               color: LaundryAppColors.darkBlue.withOpacity(order.amount > 0 ? 1 : 0.25),
-                              borderRadius: BorderRadius.circular(40)
+                              borderRadius: BorderRadius.circular(30)
                             ),
                             child: Text('${order.amount}', 
                               style: const TextStyle(
                                 color: Colors.white, 
-                                fontSize: 50, 
+                                fontSize: 30, 
                                 fontWeight: FontWeight.bold
                               )
                             )
@@ -87,17 +86,17 @@ class QuickDropoffRow extends StatelessWidget {
                                   highlightColor: LaundryAppColors.mainBlue,
                                   splashColor: LaundryAppColors.mainBlue,
                                   child: Container(
-                                    width: 80,
-                                    height: 80,
+                                    width: 60,
+                                    height: 60,
                                     decoration: BoxDecoration(
                                       color: currentOption.isSelected ? 
                                         LaundryAppColors.mainBlue : Colors.white.withOpacity(0.45),
-                                      borderRadius: BorderRadius.circular(40)
+                                      borderRadius: BorderRadius.circular(30)
                                     ),
                                     child: Icon(
                                       currentOption.service.icon,
                                       color: currentOption.isSelected ? Colors.white : LaundryAppColors.darkBlue,
-                                      size: 40
+                                      size: 30
                                     ),
                                   ),
                                 ),
