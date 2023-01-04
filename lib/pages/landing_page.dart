@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
+import 'package:laundry_app/helpers/laundry_icons_icons.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
-import 'package:laundry_app/helpers/utils.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -10,6 +10,15 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const Drawer(),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: const Icon(LaundryIcons.logo, color: LaundryAppColors.darkBlue),
+        iconTheme: const IconThemeData(color: LaundryAppColors.darkBlue),
+        leading: null,
+      ),
       backgroundColor: Colors.white,
       body: Center(
         child: SizedBox(

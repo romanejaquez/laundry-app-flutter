@@ -9,6 +9,24 @@ class LaundryStyles {
     color: LaundryAppColors.darkBlue
   );
 
+  static const TextStyle normalBlueTextStyle = TextStyle(
+    fontSize: 20, 
+    fontWeight: FontWeight.normal, 
+    color: LaundryAppColors.darkBlue
+  );
+
+  static const TextStyle mediumNormalBlueTextStyle = TextStyle(
+    fontSize: 40, 
+    fontWeight: FontWeight.normal, 
+    color: LaundryAppColors.darkBlue
+  );
+
+  static const TextStyle mediumBoldBlueTextStyle = TextStyle(
+    fontSize: 40, 
+    fontWeight: FontWeight.bold, 
+    color: LaundryAppColors.darkBlue
+  );
+
   static const TextStyle leftNavTabSelectedTextStyle = TextStyle(
     fontSize: 20, 
     fontWeight: FontWeight.bold, 
