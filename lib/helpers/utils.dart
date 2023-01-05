@@ -6,6 +6,7 @@ import 'package:laundry_app/helpers/services_options.dart';
 import 'package:laundry_app/models/garment.dart';
 import 'package:laundry_app/models/laundry_header_option.dart';
 import 'package:laundry_app/models/laundry_left_nav_tab.dart';
+import 'package:laundry_app/models/order_tab.dart';
 import 'package:laundry_app/models/quick_dropoff_order_item.dart';
 import 'package:laundry_app/models/selected_service_option.dart';
 import 'package:laundry_app/models/service_option.dart';
@@ -13,6 +14,7 @@ import 'package:laundry_app/models/service_option.dart';
 class Utils {
   static final rootNavigatorKey = GlobalKey<NavigatorState>();
   static final mainPageNavigatorKey = GlobalKey<NavigatorState>();
+  static final orderPageNavigationKey = GlobalKey<NavigatorState>();
 
   static List<LaundryLeftNavTab> getDefaultLeftNavTabs() {
     return [
@@ -24,12 +26,27 @@ class Utils {
       LaundryLeftNavTab(
         label: 'Orders',
         isSelected: false, 
-        route: '/orders'
+        route: '/ordersearch'
       ),
       LaundryLeftNavTab(
         label: 'Quick Drop-Off',
         isSelected: false, 
         route: '/quickdropoff'
+      )
+    ];
+  }
+
+  static List<OrderTab> getDefaultOrderTabs() {
+    return [
+      OrderTab(
+        label: 'Order Search',
+        isSelected: true, 
+        route: '/ordersearch'
+      ),
+      OrderTab(
+        label: 'History',
+        isSelected: false, 
+        route: '/orderhistory'
       )
     ];
   }

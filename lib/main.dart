@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/pages/landing_page.dart';
 import 'package:laundry_app/pages/main_page.dart';
+import 'package:laundry_app/pages/orders/order_history.dart';
+import 'package:laundry_app/pages/orders/order_search.dart';
 import 'package:laundry_app/pages/orders_page.dart';
 import 'package:laundry_app/pages/qrscanner_page.dart';
 import 'package:laundry_app/pages/quick_dropoff_page.dart';
@@ -12,6 +14,7 @@ import 'package:laundry_app/pages/settings_page.dart';
 import 'package:laundry_app/pages/splash_page.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
 import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
+import 'package:laundry_app/services/order_tab_selection_service.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:laundry_app/services/services_option_service.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +27,7 @@ void main() {
         Provider(create: (_) => ServicesOptionService()),
         ChangeNotifierProvider(create: (_) => LaundryLeftTabNavService()),
         ChangeNotifierProvider(create: (_) => QuickDropoffService()),
+        ChangeNotifierProvider(create: (_) => OrderTabSelectionService()),
       ],
       child: const LaundryApp()
     )
@@ -66,15 +70,43 @@ class LaundryApp extends StatelessWidget {
               );
             })
           ),
-          GoRoute(
-            parentNavigatorKey: Utils.mainPageNavigatorKey,
-            path: '/orders',
-            pageBuilder: ((context, state) {
-              return const NoTransitionPage(
-                child: OrdersPage(key: Key('services'))
+          ShellRoute(
+            navigatorKey: Utils.orderPageNavigationKey,
+            pageBuilder: ((context, state, child) {
+              return NoTransitionPage(
+                child: OrdersPage(child: child)
               );
-            }) 
+            }),
+            routes: [
+              GoRoute(
+                parentNavigatorKey: Utils.orderPageNavigationKey,
+                path: '/ordersearch',
+                pageBuilder: ((context, state) {
+                  return const NoTransitionPage(
+                    child: OrderSearch(key: Key('services'))
+                  );
+                }) 
+              ),
+              GoRoute(
+                parentNavigatorKey: Utils.orderPageNavigationKey,
+                path: '/orderhistory',
+                pageBuilder: ((context, state) {
+                  return const NoTransitionPage(
+                    child: OrderHistory(key: Key('services'))
+                  );
+                }) 
+              ),
+            ]
           ),
+          // GoRoute(
+          //   parentNavigatorKey: Utils.mainPageNavigatorKey,
+          //   path: '/orders',
+          //   pageBuilder: ((context, state) {
+          //     return const NoTransitionPage(
+          //       child: OrdersPage(key: Key('services'))
+          //     );
+          //   }) 
+          // ),
           GoRoute(
             parentNavigatorKey: Utils.mainPageNavigatorKey,
             path: '/settings',

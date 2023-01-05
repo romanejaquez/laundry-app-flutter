@@ -1,10 +1,10 @@
 import 'package:laundry_app/models/base_tab.dart';
 
-class LaundryLeftNavTab extends BaseTab {
+class OrderTab extends BaseTab {
   
-  LaundryLeftNavTab({
+  OrderTab({
     required super.label, 
     required super.isSelected, 
     required super.route
-  });
+  });  
 }
