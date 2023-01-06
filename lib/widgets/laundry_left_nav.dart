@@ -40,7 +40,7 @@ class LaundryLeftNav extends StatelessWidget {
                       child: RotatedBox(
                         quarterTurns: -1,
                         child: Container(
-                          margin: tab.isSelected ? const EdgeInsets.only(bottom: 20) : null,
+                          margin: tab.isSelected ? const EdgeInsets.only(bottom: 40) : null,
                           child: Text(
                             tab.label,
                             style: tab.isSelected ? LaundryStyles.leftNavTabNormalTextStyle : LaundryStyles.leftNavTabSelectedTextStyle
