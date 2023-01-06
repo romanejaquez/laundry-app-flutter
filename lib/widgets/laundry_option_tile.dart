@@ -3,19 +3,24 @@ import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/models/service_option.dart';
 
-class ServiceOptionTile extends StatefulWidget {
+class LaundryOptionTile extends StatefulWidget {
 
-  final ServiceOption option;
-  const ServiceOptionTile({
+  final String label;
+  final IconData icon;
+  final Function onOptionPressed;
+
+  const LaundryOptionTile({
     super.key,
-    required this.option  
+    required this.label,
+    required this.icon,
+    required this.onOptionPressed  
   });
 
   @override
-  State<ServiceOptionTile> createState() => _ServiceOptionTileState();
+  State<LaundryOptionTile> createState() => _LaundryOptionTileState();
 }
 
-class _ServiceOptionTileState extends State<ServiceOptionTile> {
+class _LaundryOptionTileState extends State<LaundryOptionTile> {
   
   bool isPressed = false;
   
@@ -32,7 +37,9 @@ class _ServiceOptionTileState extends State<ServiceOptionTile> {
               isPressed = value;
             });
           },
-          onTap: () {},
+          onTap: () {
+            widget.onOptionPressed();
+          },
           splashColor: LaundryAppColors.darkBlue,
           highlightColor: LaundryAppColors.mainBlue,
           child: Container(
@@ -47,14 +54,17 @@ class _ServiceOptionTileState extends State<ServiceOptionTile> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  widget.option.icon,
+                  widget.icon,
                   color: isPressed ? Colors.white : LaundryAppColors.darkBlue,
-                  size: 80  
+                  size: 120  
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Text(
-                  widget.option.label,
-                  style: isPressed ?  LaundryStyles.serviceOptionTileLabelPressed : LaundryStyles.serviceOptionTileLabelNormal  
+                  widget.label,
+                  textAlign: TextAlign.center,
+                  style: isPressed ? 
+                    LaundryStyles.serviceOptionTileLabelPressed : 
+                      LaundryStyles.serviceOptionTileLabelNormal  
                 )
               ],
             ),

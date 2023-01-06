@@ -11,17 +11,17 @@ class LaundryLeftNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: 180,
       color: LaundryAppColors.mainBlue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Padding(
-            padding: EdgeInsets.all(30),
+            padding: EdgeInsets.all(40),
             child: Icon(
               LaundryIcons.logo, 
               color: Colors.white, 
-              size: 40
+              size: LaundryStyles.lgIconSize
             ),
           ),
           Expanded(
@@ -35,7 +35,7 @@ class LaundryLeftNav extends StatelessWidget {
                     },
                     child: Container(
                       margin: const EdgeInsets.only(top: 5, bottom: 5),
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(30),
                       decoration: tab.isSelected ? LaundryStyles.selectedTabDecoration : LaundryStyles.normalTabDecoration,
                       child: RotatedBox(
                         quarterTurns: -1,

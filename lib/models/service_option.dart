@@ -1,7 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:laundry_app/helpers/services_options.dart';
+import 'package:laundry_app/helpers/enums.dart';
 
 class ServiceOption {
   String label;

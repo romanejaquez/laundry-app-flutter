@@ -34,7 +34,7 @@ class _OrderSearchState extends State<OrderSearch> {
               width: 5
             )
           ),
-          height: 75,
+          height: 90,
           alignment: Alignment.center,
           child: Row(
             children: [
@@ -60,15 +60,16 @@ class _OrderSearchState extends State<OrderSearch> {
                       backgroundColor: LaundryAppColors.darkBlue.withOpacity(0.5)
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(12),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: const [
-                          Icon(Icons.search, color: Colors.white),
-                          SizedBox(width: 10),
+                          Icon(Icons.search, color: Colors.white, size: 30),
+                          SizedBox(width: 20),
                           Text('Search',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20
+                              fontSize: 30
                             )
                           ),
                           SizedBox(width: 10),

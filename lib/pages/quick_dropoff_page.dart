@@ -23,7 +23,11 @@ class QuickDropoffPage extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.dry_cleaning, color: LaundryAppColors.darkBlue, size: 60),
+              const Icon(
+                Icons.dry_cleaning,
+                color: LaundryAppColors.darkBlue,
+                size: LaundryStyles.defaultIconSize
+              ),
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

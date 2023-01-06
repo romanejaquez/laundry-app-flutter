@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
+import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/models/quick_dropoff_order_item.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:provider/provider.dart';
@@ -17,21 +18,26 @@ class QuickDropoffRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 5, bottom: 5),
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: LaundryAppColors.mainBlue.withOpacity(0.25),
-        borderRadius: BorderRadius.circular(50)
+        borderRadius: BorderRadius.circular(100)
       ),
       child: Row(
         children: [
           Container(
-            width: 60,
-            height: 60,
+            width: 120,
+            height: 120,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               color: LaundryAppColors.mainBlue,
-              borderRadius: BorderRadius.circular(30)
+              borderRadius: BorderRadius.circular(60)
             ),
-            child: Icon(order.garment.icon, color: Colors.white, size: 30),
+            child: Icon(
+              order.garment.icon, 
+              color: Colors.white, 
+              size: LaundryStyles.defaultIconSize
+            ),
           ),
           Expanded(
             child: Consumer<QuickDropoffService>(
@@ -48,17 +54,17 @@ class QuickDropoffRow extends StatelessWidget {
                             qdService.incrementAmount(order.id);
                           },
                           child: Container(
+                            width: 120,
+                            height: 120,
                             alignment: Alignment.center,
-                            width: 60,
-                            height: 60,
                             decoration: BoxDecoration(
                               color: LaundryAppColors.darkBlue.withOpacity(order.amount > 0 ? 1 : 0.25),
-                              borderRadius: BorderRadius.circular(30)
+                              borderRadius: BorderRadius.circular(60)
                             ),
                             child: Text('${order.amount}', 
                               style: const TextStyle(
                                 color: Colors.white, 
-                                fontSize: 30, 
+                                fontSize: 60, 
                                 fontWeight: FontWeight.bold
                               )
                             )
@@ -86,17 +92,18 @@ class QuickDropoffRow extends StatelessWidget {
                                   highlightColor: LaundryAppColors.mainBlue,
                                   splashColor: LaundryAppColors.mainBlue,
                                   child: Container(
-                                    width: 60,
-                                    height: 60,
+                                    width: 120,
+                                    height: 120,
+                                    alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                       color: currentOption.isSelected ? 
                                         LaundryAppColors.mainBlue : Colors.white.withOpacity(0.45),
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(60)
                                     ),
                                     child: Icon(
                                       currentOption.service.icon,
                                       color: currentOption.isSelected ? Colors.white : LaundryAppColors.darkBlue,
-                                      size: 30
+                                      size: LaundryStyles.defaultIconSize
                                     ),
                                   ),
                                 ),

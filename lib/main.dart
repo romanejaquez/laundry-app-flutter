@@ -12,10 +12,12 @@ import 'package:laundry_app/pages/quick_dropoff_page.dart';
 import 'package:laundry_app/pages/services_page.dart';
 import 'package:laundry_app/pages/settings_page.dart';
 import 'package:laundry_app/pages/splash_page.dart';
+import 'package:laundry_app/services/garment_options_service.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
 import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
 import 'package:laundry_app/services/order_tab_selection_service.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
+import 'package:laundry_app/services/service_steps_service.dart';
 import 'package:laundry_app/services/services_option_service.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +30,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => LaundryLeftTabNavService()),
         ChangeNotifierProvider(create: (_) => QuickDropoffService()),
         ChangeNotifierProvider(create: (_) => OrderTabSelectionService()),
+        ChangeNotifierProvider(create: (_) => ServiceStepsService()),
+        ChangeNotifierProvider(create: (_) => GarmentOptionsService()),
       ],
       child: const LaundryApp()
     )
