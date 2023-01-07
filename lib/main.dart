@@ -19,6 +19,7 @@ import 'package:laundry_app/services/order_tab_selection_service.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:laundry_app/services/service_steps_service.dart';
 import 'package:laundry_app/services/services_option_service.dart';
+import 'package:laundry_app/services/side_panel_service.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,12 +27,13 @@ void main() {
     MultiProvider(
       providers: [
         Provider(create: (_) => LaundryHeaderOptionsService()),
-        Provider(create: (_) => ServicesOptionService()),
+        ChangeNotifierProvider(create: (_) => ServicesOptionService()),
         ChangeNotifierProvider(create: (_) => LaundryLeftTabNavService()),
         ChangeNotifierProvider(create: (_) => QuickDropoffService()),
         ChangeNotifierProvider(create: (_) => OrderTabSelectionService()),
         ChangeNotifierProvider(create: (_) => ServiceStepsService()),
         ChangeNotifierProvider(create: (_) => GarmentOptionsService()),
+        ChangeNotifierProvider(create: (_) => SidePanelService()),
       ],
       child: const LaundryApp()
     )
@@ -102,15 +104,6 @@ class LaundryApp extends StatelessWidget {
               ),
             ]
           ),
-          // GoRoute(
-          //   parentNavigatorKey: Utils.mainPageNavigatorKey,
-          //   path: '/orders',
-          //   pageBuilder: ((context, state) {
-          //     return const NoTransitionPage(
-          //       child: OrdersPage(key: Key('services'))
-          //     );
-          //   }) 
-          // ),
           GoRoute(
             parentNavigatorKey: Utils.mainPageNavigatorKey,
             path: '/settings',

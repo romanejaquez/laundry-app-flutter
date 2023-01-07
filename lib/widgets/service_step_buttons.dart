@@ -11,59 +11,91 @@ class ServiceStepButtons extends StatelessWidget {
     return Consumer<ServiceStepsService>(
       builder: (context, stepService, child) {
         return Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: LaundryAppColors.darkBlue,
-                  shape: const StadiumBorder(),
-                  elevation: 0,
-                  shadowColor: Colors.transparent
-                ),
-                onPressed: stepService.currentStep!.stepIndex > 0 ? () {
-                  stepService.goBackToPreviousStep();
-                } : null,
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Icon(Icons.arrow_left, size: 50),
-                      SizedBox(width: 20),
-                      Text('Previous Step',
-                        style: TextStyle(fontSize: 30)
-                      )
-                    ],
-                  ),
-                )
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: LaundryAppColors.successGreen,
+                shape: const StadiumBorder(),
+                elevation: 0,
+                shadowColor: Colors.transparent
               ),
-              const SizedBox(width: 20),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: LaundryAppColors.darkBlue,
-                  shape: const StadiumBorder(),
-                  elevation: 0,
-                  shadowColor: Colors.transparent
+              onPressed: stepService.selectionsMade() ? () {
+                stepService.resetAll();
+              } : null,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Icon(Icons.restart_alt, size: 50),
+                    SizedBox(width: 20),
+                    Text('Reset All',
+                      style: TextStyle(fontSize: 30)
+                    )
+                  ],
                 ),
-                onPressed: stepService.canGoToNextStep() ? () {
-                  stepService.moveToNextStep();
-                } : null,
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text('Next Step',
-                        style: TextStyle(fontSize: 30)
+              )
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: LaundryAppColors.darkBlue,
+                        shape: const StadiumBorder(),
+                        elevation: 0,
+                        shadowColor: Colors.transparent
                       ),
-                      SizedBox(width: 20),
-                      Icon(Icons.arrow_right, size: 50),
-                    ],
-                  ),
-                )
+                      onPressed: stepService.currentStep!.stepIndex > 0 ? () {
+                        stepService.goBackToPreviousStep();
+                      } : null,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: const [
+                            Icon(Icons.arrow_left, size: 50),
+                            SizedBox(width: 20),
+                            Text('Previous Step',
+                              style: TextStyle(fontSize: 30)
+                            )
+                          ],
+                        ),
+                      )
+                    ),
+                    const SizedBox(width: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: LaundryAppColors.darkBlue,
+                        shape: const StadiumBorder(),
+                        elevation: 0,
+                        shadowColor: Colors.transparent
+                      ),
+                      onPressed: stepService.canGoToNextStep() ? () {
+                        stepService.moveToNextStep();
+                      } : null,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: const [
+                            Text('Next Step',
+                              style: TextStyle(fontSize: 30)
+                            ),
+                            SizedBox(width: 20),
+                            Icon(Icons.arrow_right, size: 50),
+                          ],
+                        ),
+                      )
+                    ),
+                ],
               ),
+            ),
           ],
         );
       }
