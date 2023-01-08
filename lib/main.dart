@@ -1,13 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:laundry_app/firebase_options.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/pages/landing_page.dart';
 import 'package:laundry_app/pages/main_page.dart';
 import 'package:laundry_app/pages/orders/order_history.dart';
 import 'package:laundry_app/pages/orders/order_search.dart';
 import 'package:laundry_app/pages/orders_page.dart';
-import 'package:laundry_app/pages/qrscanner_page.dart';
+import 'package:laundry_app/pages/mobile/qrscanner_page.dart';
 import 'package:laundry_app/pages/quick_dropoff_page.dart';
 import 'package:laundry_app/pages/services_page.dart';
 import 'package:laundry_app/pages/settings_page.dart';
@@ -15,18 +17,29 @@ import 'package:laundry_app/pages/splash_page.dart';
 import 'package:laundry_app/services/garment_options_service.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
 import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
+import 'package:laundry_app/services/order_processing_service.dart';
+import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:laundry_app/services/order_tab_selection_service.dart';
+import 'package:laundry_app/services/qrscan_data_service.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:laundry_app/services/service_steps_service.dart';
 import 'package:laundry_app/services/services_option_service.dart';
 import 'package:laundry_app/services/side_panel_service.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     MultiProvider(
       providers: [
         Provider(create: (_) => LaundryHeaderOptionsService()),
+        Provider(create: (_) => QRScanDataService()),
+        Provider(create: (_) => OrderProcessingService()),
         ChangeNotifierProvider(create: (_) => ServicesOptionService()),
         ChangeNotifierProvider(create: (_) => LaundryLeftTabNavService()),
         ChangeNotifierProvider(create: (_) => QuickDropoffService()),
@@ -34,6 +47,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => ServiceStepsService()),
         ChangeNotifierProvider(create: (_) => GarmentOptionsService()),
         ChangeNotifierProvider(create: (_) => SidePanelService()),
+        ChangeNotifierProvider(create: (_) => OrderReceivedNotificationService()),
       ],
       child: const LaundryApp()
     )

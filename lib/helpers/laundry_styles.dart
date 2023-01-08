@@ -37,6 +37,25 @@ class LaundryStyles {
     color: LaundryAppColors.darkBlue
   );
 
+  static const TextStyle largeNormalBlueTextStyle = TextStyle(
+    fontSize: 40, 
+    fontWeight: FontWeight.normal, 
+    color: LaundryAppColors.darkBlue
+  );
+
+  static const TextStyle largeBoldBlueTextStyle = TextStyle(
+    fontSize: 60, 
+    fontWeight: FontWeight.bold, 
+    color: LaundryAppColors.darkBlue
+  );
+
+  static const TextStyle xLargeBoldBlueTextStyle = TextStyle(
+    fontSize: 80, 
+    fontWeight: FontWeight.bold, 
+    color: LaundryAppColors.darkBlue
+  );
+
+
   static const BoxDecoration selectedTabDecoration = BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.only(

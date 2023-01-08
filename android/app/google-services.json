@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157769265704",
+    "project_id": "laundry-pos-app-8bdaa",
+    "storage_bucket": "laundry-pos-app-8bdaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157769265704:android:22534f99ca3fec0b91fb1d",
+        "android_client_info": {
+          "package_name": "com.example.laundry_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157769265704-ftpc5qcn95kot5r2eii45bdtmojc36nt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQPcVjGN1NSBSqsXTo2a09MURWPY0RoQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157769265704-ftpc5qcn95kot5r2eii45bdtmojc36nt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
