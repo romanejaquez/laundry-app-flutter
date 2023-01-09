@@ -13,7 +13,7 @@ class SidePanelToggle extends StatelessWidget {
       builder: (context, sidePanelService, child) {
 
         var icon = sidePanelService.showSidePanel ? Icons.toggle_off : Icons.toggle_on;
-        var label = sidePanelService.showSidePanel ? 'Toggle Off' : 'Toggle On';
+        var label = sidePanelService.showSidePanel ? 'Side Panel Off' : 'Side Panel On';
         var color = sidePanelService.showSidePanel ? LaundryAppColors.darkBlue : LaundryAppColors.mainBlue;
         return Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -24,26 +24,22 @@ class SidePanelToggle extends StatelessWidget {
               ),
               onPressed: () {
                 context.read<SidePanelService>().toggleSidePanel();
-                context.read<OrderReceivedNotificationService>().notifyOrderReceived();
               },
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    Icon(
-                      icon, 
-                      color: color,
-                      size: 60
-                    ),
-                    const SizedBox(width: 10),
-                    Text(label,
-                      style: TextStyle(
-                        color: color, 
-                        fontSize: 30
-                      )
+              child: Row(
+                children: [
+                  Icon(
+                    icon, 
+                    color: color,
+                    size: 50
+                  ),
+                  const SizedBox(width: 10),
+                  Text(label,
+                    style: TextStyle(
+                      color: color, 
+                      fontSize: 20
                     )
-                  ],
-                ),
+                  )
+                ],
               )
             ),
           ],

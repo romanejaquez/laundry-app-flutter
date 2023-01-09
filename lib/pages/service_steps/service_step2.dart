@@ -19,33 +19,36 @@ class ServiceStep2 extends StatelessWidget {
 
         return Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 30, top: 30),
-              child: Text('Select the Garment',
-                style: LaundryStyles.header1TitleStyle
+            Padding(
+              padding: EdgeInsets.only(
+                left: LaundryStyles.largePadding,
+                top: LaundryStyles.mediumPadding
+              ),
+              child: const Text('Select the Garment',
+                style: LaundryStyles.header2TitleStyle
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: LaundryStyles.smallGapSize),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(30),
-                child: Wrap(
-                  runSpacing: 10,
-                  spacing: 10,
-                  children: List.generate(garmentOptions.garments.length,
-                    (index) {
-                      var currentGarment = garmentOptions.garments[index];
+              child: Wrap(
+                runSpacing: LaundryStyles.smallGapSize,
+                spacing: LaundryStyles.smallGapSize,
+                alignment: WrapAlignment.start,
+                crossAxisAlignment: WrapCrossAlignment.start,
+                direction: Axis.horizontal,
+                children: List.generate(garmentOptions.garments.length,
+                  (index) {
+                    var currentGarment = garmentOptions.garments[index];
 
-                      return LaundryOptionTile(
-                        label: currentGarment.garment.label,
-                        icon: currentGarment.garment.icon,
-                        isSelected: currentGarment.isSelected,
-                        onOptionPressed: () {
-                          garmentOptions.selectGarment(currentGarment);
-                        },  
-                      );
-                    }),
-                ),
+                    return LaundryOptionTile(
+                      label: currentGarment.garment.label,
+                      icon: currentGarment.garment.icon,
+                      isSelected: currentGarment.isSelected,
+                      onOptionPressed: () {
+                        garmentOptions.selectGarment(currentGarment);
+                      },  
+                    );
+                  }),
               )
             ),
           ],

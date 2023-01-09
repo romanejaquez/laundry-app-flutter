@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
+import 'package:laundry_app/helpers/utils.dart';
 
 class LaundryOptionTile extends StatefulWidget {
 
@@ -32,11 +33,11 @@ class _LaundryOptionTileState extends State<LaundryOptionTile> {
   Widget build(BuildContext context) {
 
     return Container(
-      constraints: const BoxConstraints(minWidth: 350),
-      margin: const EdgeInsets.all(5),
+      constraints: const BoxConstraints(minWidth: 250),
+      margin: const EdgeInsets.all(10),
       child: Material(
         clipBehavior: Clip.antiAlias,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(LaundryStyles.mediumBorderRadius),
         child: InkWell(
           onTap: () {
             widget.onOptionPressed();
@@ -44,10 +45,10 @@ class _LaundryOptionTileState extends State<LaundryOptionTile> {
           splashColor: LaundryAppColors.darkBlue,
           highlightColor: LaundryAppColors.mainBlue,
           child: Container(
-            padding: const EdgeInsets.all(50),
+            padding: EdgeInsets.all(LaundryStyles.largePadding),
             decoration: BoxDecoration(
               color: widget.isSelected ? LaundryAppColors.mainBlue : LaundryAppColors.mainBlue.withOpacity(0.05),
-              borderRadius: BorderRadius.circular(20)
+              borderRadius: BorderRadius.circular(LaundryStyles.mediumBorderRadius)
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -57,9 +58,9 @@ class _LaundryOptionTileState extends State<LaundryOptionTile> {
                 Icon(
                   widget.icon,
                   color: widget.isSelected ? Colors.white : LaundryAppColors.darkBlue,
-                  size: 120  
+                  size: LaundryStyles.lgIconSize
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: LaundryStyles.mediumGapSize),
                 Text(
                   widget.label,
                   textAlign: TextAlign.center,

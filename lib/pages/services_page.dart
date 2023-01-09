@@ -21,8 +21,6 @@ class ServicesPage extends StatelessWidget {
     
     return Column(
       children: [
-        const SidePanelToggle(),
-
         // main region
         Expanded(
           child: Row(

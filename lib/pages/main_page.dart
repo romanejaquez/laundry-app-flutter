@@ -3,8 +3,6 @@ import 'package:laundry_app/pages/orders/order_received_notification_wrapper.dar
 import 'package:laundry_app/services/side_panel_service.dart';
 import 'package:laundry_app/widgets/laundry_header.dart';
 import 'package:laundry_app/widgets/laundry_left_nav.dart';
-import 'package:laundry_app/widgets/side_panel_wrapper.dart';
-import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
   final Widget child;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
+import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
+import 'package:laundry_app/widgets/side_panel_toggle.dart';
 import 'package:provider/provider.dart';
 
 class LaundryHeader extends StatelessWidget {
@@ -24,15 +26,19 @@ class LaundryHeader extends StatelessWidget {
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: optionsService.allOptions.map((o) {
+              children: [
+                const SidePanelToggle(),
+                SizedBox(width: LaundryStyles.smallGapSize),
+                ...optionsService.allOptions.map((o) {
                 return Container(
                   alignment: Alignment.center,
-                  width: 50,
-                  height: 50,
+                  width: 65,
+                  height: 65,
                   color: o.bgColor,
                   child: Icon(o.icon, color: o.iconColor)
                 );
-              }).toList(),
+              }).toList()
+              ],
             ),
           )
         ],

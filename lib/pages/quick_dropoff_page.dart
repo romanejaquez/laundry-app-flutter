@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
+import 'package:laundry_app/widgets/laundry_action_button.dart';
 import 'package:laundry_app/widgets/quick_dropoff_row.dart';
 import 'package:provider/provider.dart';
 
@@ -11,50 +12,84 @@ class QuickDropoffPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var quickDropoffService = context.read<QuickDropoffService>();
-    
-    return Container(
-      padding: const EdgeInsets.all(30),
-      color: Colors.transparent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Consumer<QuickDropoffService>(
+      builder: (context, quickDropoffService, child) {
+        return Container(
+          padding: const EdgeInsets.all(30),
+          color: Colors.transparent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
-                Icons.dry_cleaning,
-                color: LaundryAppColors.darkBlue,
-                size: LaundryStyles.defaultIconSize
-              ),
-              const SizedBox(width: 20),
-              Column(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Text('Quick Drop-Off',
-                    style: LaundryStyles.header1TitleStyle
+                children: [
+                  const Icon(
+                    Icons.dry_cleaning,
+                    color: LaundryAppColors.darkBlue,
+                    size: LaundryStyles.mediumIconSize
                   ),
-                  Text('6 or Less Items',
-                    style: LaundryStyles.header3TitleStyle
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Text('Quick Drop-Off',
+                        style: LaundryStyles.header1TitleStyle
+                      ),
+                      Text('6 or Less Items',
+                        style: LaundryStyles.header3TitleStyle
+                      )
+                    ],
                   )
                 ],
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: quickDropoffService.orderItems.length,
+                  itemBuilder: ((context, index) {
+                    var quickDropoffItem = quickDropoffService.orderItems[index];
+                    return QuickDropoffRow(order: quickDropoffItem);
+                  })
+                )
+              ),
+              SizedBox(height: LaundryStyles.smallGapSize),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  LaundryActionButton(
+                    label: 'Reset All',
+                    color: LaundryAppColors.darkBlue,
+                    icon: Icons.restart_alt,
+                    onPressed: () {}
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      LaundryActionButton(
+                        label: 'Cancel',
+                        color: LaundryAppColors.errorRed,
+                        icon: Icons.cancel,
+                        onPressed: () {}
+                      ),
+                      SizedBox(width: LaundryStyles.smallGapSize),
+                      LaundryActionButton(
+                        label: 'Complete Order',
+                        color: LaundryAppColors.successGreen,
+                        icon: Icons.check_circle,
+                        onPressed: quickDropoffService.quickDropOffItemsAvailable() ? () {
+                          
+                        } : null
+                      ),
+                    ],
+                  ),
+                ],
               )
-            ],
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: ListView.builder(
-              itemCount: quickDropoffService.orderItems.length,
-              itemBuilder: ((context, index) {
-                var quickDropoffItem = quickDropoffService.orderItems[index];
-                return QuickDropoffRow(order: quickDropoffItem);
-              })
-            )
+            ]
           )
-        ]
-      )
+        );
+      }
     );
   }
 }

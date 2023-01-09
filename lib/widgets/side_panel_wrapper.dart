@@ -12,7 +12,7 @@ class SidePanelWrapper extends StatelessWidget {
         return sidePanelService.showSidePanel ?
         Container(
           color: Colors.white,
-          constraints: const BoxConstraints(minWidth: 400),
+          constraints: const BoxConstraints(minWidth: 200),
           child: Column(
             children: [
               Text('side panel'),

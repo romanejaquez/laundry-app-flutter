@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
+import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/services/service_steps_service.dart';
+import 'package:laundry_app/widgets/laundry_action_button.dart';
 import 'package:provider/provider.dart';
 
 class ServiceStepButtons extends StatelessWidget {
@@ -13,85 +15,34 @@ class ServiceStepButtons extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: LaundryAppColors.successGreen,
-                shape: const StadiumBorder(),
-                elevation: 0,
-                shadowColor: Colors.transparent
-              ),
+            LaundryActionButton(
+              label: 'Reset All',
+              color: LaundryAppColors.darkBlue,
+              icon: Icons.restart_alt,
               onPressed: stepService.selectionsMade() ? () {
                 stepService.resetAll();
               } : null,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    Icon(Icons.restart_alt, size: 50),
-                    SizedBox(width: 20),
-                    Text('Reset All',
-                      style: TextStyle(fontSize: 30)
-                    )
-                  ],
-                ),
-              )
             ),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: LaundryAppColors.darkBlue,
-                        shape: const StadiumBorder(),
-                        elevation: 0,
-                        shadowColor: Colors.transparent
-                      ),
+                    LaundryActionButton(
+                      label: 'Previous Step',
+                      color: LaundryAppColors.darkBlue,
+                      icon: Icons.arrow_left,
                       onPressed: stepService.currentStep!.stepIndex > 0 ? () {
                         stepService.goBackToPreviousStep();
                       } : null,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                            Icon(Icons.arrow_left, size: 50),
-                            SizedBox(width: 20),
-                            Text('Previous Step',
-                              style: TextStyle(fontSize: 30)
-                            )
-                          ],
-                        ),
-                      )
                     ),
                     const SizedBox(width: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: LaundryAppColors.darkBlue,
-                        shape: const StadiumBorder(),
-                        elevation: 0,
-                        shadowColor: Colors.transparent
-                      ),
+                    LaundryActionButton(
+                      label: 'Next Step',
+                      color: LaundryAppColors.darkBlue,
+                      icon: Icons.arrow_right,
                       onPressed: stepService.canGoToNextStep() ? () {
                         stepService.moveToNextStep();
                       } : null,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                            Text('Next Step',
-                              style: TextStyle(fontSize: 30)
-                            ),
-                            SizedBox(width: 20),
-                            Icon(Icons.arrow_right, size: 50),
-                          ],
-                        ),
-                      )
                     ),
                 ],
               ),

@@ -19,7 +19,7 @@ import 'package:laundry_app/pages/service_steps/service_step4.dart';
 class Utils {
   static final rootNavigatorKey = GlobalKey<NavigatorState>();
   static final mainPageNavigatorKey = GlobalKey<NavigatorState>();
-  static final orderPageNavigationKey = GlobalKey<NavigatorState>();
+  static final orderPageNavigationKey = GlobalKey<NavigatorState>();  
 
   static List<LaundryLeftNavTab> getDefaultLeftNavTabs() {
     return [

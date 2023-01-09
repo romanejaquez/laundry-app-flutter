@@ -32,4 +32,8 @@ class QuickDropoffService extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  bool quickDropOffItemsAvailable() {
+    return orderItems.any((q) => q.options.any((o) => o.isSelected));
+  }
 }

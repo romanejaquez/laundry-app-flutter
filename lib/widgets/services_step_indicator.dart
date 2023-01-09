@@ -16,42 +16,39 @@ class _ServicesStepIndicatorState extends State<ServicesStepIndicator> {
     return Consumer<ServiceStepsService>(
       builder: (context, service, child) {
 
-        return Container(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            children: List.generate(service.steps.length, (index) {
+        return Row(
+          children: List.generate(service.steps.length, (index) {
 
-              var stepColor = service.currentStep!.stepIndex == index ||
-                service.steps[index].isComplete ?
-                LaundryAppColors.mainBlue : LaundryAppColors.lightGray;
+            var stepColor = service.currentStep!.stepIndex == index ||
+              service.steps[index].isComplete ?
+              LaundryAppColors.mainBlue : LaundryAppColors.lightGray;
 
-              var stepBullet = Container(
-                width: 30,
-                height: 30,
-                decoration: BoxDecoration(
-                  color: stepColor,
-                  borderRadius: BorderRadius.circular(20)
+            var stepBullet = Container(
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                color: stepColor,
+                borderRadius: BorderRadius.circular(20)
+              ),
+            );
+
+            return index == 0 ? stepBullet : Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 10, right: 10),
+                      height: 10,
+                      decoration: BoxDecoration(
+                      color: stepColor,
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                  )
                 ),
-              );
-
-              return index == 0 ? stepBullet : Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.only(left: 10, right: 10),
-                        height: 20,
-                        decoration: BoxDecoration(
-                        color: stepColor,
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                    )
-                  ),
-                  stepBullet,
-                ]),
-              );
-            })
-          )
+                stepBullet,
+              ]),
+            );
+          })
         );
       }
     );

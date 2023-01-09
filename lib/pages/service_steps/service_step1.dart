@@ -19,19 +19,24 @@ class ServiceStep1 extends StatelessWidget {
         
         return Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 30, top: 30),
-              child: Text('Select the Service',
-                style: LaundryStyles.header1TitleStyle
+            Padding(
+              padding: EdgeInsets.only(
+                left: LaundryStyles.largePadding,
+                top: LaundryStyles.mediumPadding
+              ),
+              child: const Text('Select the Service',
+                style: LaundryStyles.header2TitleStyle
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: LaundryStyles.smallGapSize),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(30),
+              child: SingleChildScrollView(
                 child: Wrap(
+                  alignment: WrapAlignment.start,
+                  crossAxisAlignment: WrapCrossAlignment.start,
                   runSpacing: 10,
                   spacing: 10,
+                  direction: Axis.horizontal,
                   children: List.generate(serviceOptions.options.length,
                     (index) {
                       var currentOption = serviceOptions.options[index];
@@ -45,8 +50,8 @@ class ServiceStep1 extends StatelessWidget {
                       );
                     }),
                 ),
-              )
-            ),
+              ),
+            )
           ],
         );
       }

@@ -4,16 +4,21 @@ import 'package:laundry_app/models/order_model.dart';
 
 class OrderReceivedNotificationService extends ChangeNotifier {
 
-  late OrderModel receivedOrder;
+  OrderModel? receivedOrder;
 
   OrderReceivedNotificationService() {
     setupListeners();
   }
+
   bool orderReceived = false;
 
   void notifyOrderReceived() {
     orderReceived = true;
     notifyListeners();
+  }
+
+  void resetOrder() {
+    receivedOrder = null;
   }
 
   void hideOrderReceivedPanel() {
@@ -22,8 +27,12 @@ class OrderReceivedNotificationService extends ChangeNotifier {
   }
 
   void setupListeners() {
-    FirebaseFirestore.instance.collection('orders').snapshots().listen(
+    FirebaseFirestore.instance.collection('orders').orderBy('created', descending: true).snapshots().listen(
       (QuerySnapshot snapshot) {
+        if (snapshot.docs.isEmpty) {
+          return;
+        }
+        
         var latestOrder = snapshot.docs.first;
         var orderData = latestOrder.data() as Map<String, dynamic>;
         receivedOrder = OrderModel.fromJson(orderData, latestOrder.id);
