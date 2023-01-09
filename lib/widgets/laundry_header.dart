@@ -27,7 +27,7 @@ class LaundryHeader extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const SidePanelToggle(),
+                //const SidePanelToggle(),
                 SizedBox(width: LaundryStyles.smallGapSize),
                 ...optionsService.allOptions.map((o) {
                 return Container(
