@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:laundry_app/helpers/laundry_header_actions.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
@@ -30,12 +32,27 @@ class LaundryHeader extends StatelessWidget {
                 //const SidePanelToggle(),
                 SizedBox(width: LaundryStyles.smallGapSize),
                 ...optionsService.allOptions.map((o) {
-                return Container(
-                  alignment: Alignment.center,
-                  width: 65,
-                  height: 65,
-                  color: o.bgColor,
-                  child: Icon(o.icon, color: o.iconColor)
+                return GestureDetector(
+                  onTap: () {
+                    switch(o.action) {
+                      case LaundryHeaderActions.exit:
+                        GoRouter.of(Utils.rootNavigatorKey.currentContext!).go('/landing');
+                        break;
+                      case LaundryHeaderActions.back:
+                        break;
+                      case LaundryHeaderActions.settings:
+                        break;
+                      case LaundryHeaderActions.wifi:
+                        break;
+                    }
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 65,
+                    height: 65,
+                    color: o.bgColor,
+                    child: Icon(o.icon, color: o.iconColor)
+                  ),
                 );
               }).toList()
               ],

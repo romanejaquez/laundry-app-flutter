@@ -8,6 +8,7 @@ class ServiceStepsService extends ChangeNotifier {
   BaseService? baseService;
   List<ServiceStep> steps = [];
   ServiceStep? currentStep;
+  PageController? pageController;
   
   ServiceStepsService() {
     steps = Utils.getServiceSteps();
@@ -24,6 +25,12 @@ class ServiceStepsService extends ChangeNotifier {
   void moveToNextStep() {
     currentStep!.isComplete = true;
     currentStep = steps[currentStep!.stepIndex + 1];
+
+    pageController!.nextPage(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOut
+    ).whenComplete(() => notifyListeners());
+
     notifyListeners();
   }
 
@@ -34,6 +41,12 @@ class ServiceStepsService extends ChangeNotifier {
   void goBackToPreviousStep() {
     currentStep!.isComplete = false;
     currentStep = steps[currentStep!.stepIndex - 1];
+
+    pageController!.previousPage(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOut
+    ).whenComplete(() => notifyListeners());
+
     notifyListeners();
   }
 
@@ -43,6 +56,10 @@ class ServiceStepsService extends ChangeNotifier {
   }
 
   bool selectionsMade() {
-    return baseService!.selectionsMade();
+    return baseService != null ? baseService!.selectionsMade() : false;
+  }
+
+  void setPageController(PageController ctrl) {
+    pageController = ctrl;
   }
 }

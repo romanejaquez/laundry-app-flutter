@@ -13,8 +13,30 @@ import 'package:laundry_app/widgets/side_panel_toggle.dart';
 import 'package:laundry_app/widgets/side_panel_wrapper.dart';
 import 'package:provider/provider.dart';
 
-class ServicesPage extends StatelessWidget {
+class ServicesPage extends StatefulWidget {
   const ServicesPage({super.key});
+
+  @override
+  State<ServicesPage> createState() => _ServicesPageState();
+}
+
+class _ServicesPageState extends State<ServicesPage> {
+
+  late PageController ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    ctrl = PageController(
+      initialPage: 0
+    );
+  }
+  
+  @override
+  void dispose() {
+    ctrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +59,14 @@ class ServicesPage extends StatelessWidget {
                       Expanded(
                         child: Consumer<ServiceStepsService>(
                           builder: (context, stepService, child) {
-                            return stepService.currentStep!.stepView;
+                            
+                            stepService.setPageController(ctrl);
+                            return PageView(
+                              controller: ctrl,
+                              physics: stepService.canGoToNextStep() ? 
+                                const NeverScrollableScrollPhysics() : null,
+                              children: stepService.steps.map((s) => s.stepView).toList(),
+                            );
                           },
                         ),
                       ),

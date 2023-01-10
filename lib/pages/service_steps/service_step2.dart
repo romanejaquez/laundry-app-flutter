@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
+import 'package:laundry_app/pages/service_steps/service_step_anim.dart';
 import 'package:laundry_app/services/garment_options_service.dart';
 import 'package:laundry_app/services/service_steps_service.dart';
 import 'package:laundry_app/widgets/laundry_option_tile.dart';
@@ -11,7 +12,7 @@ class ServiceStep2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Consumer<GarmentOptionsService>(
+    Widget stepWidget = Consumer<GarmentOptionsService>(
       builder: (context, garmentOptions, child) {
 
         ServiceStepsService sss = context.read<ServiceStepsService>();
@@ -55,5 +56,7 @@ class ServiceStep2 extends StatelessWidget {
         );
       }
     );
+
+    return ServiceStepAnimation(childStep: stepWidget);
   }
 }
