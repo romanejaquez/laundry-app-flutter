@@ -20,6 +20,7 @@ import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
 import 'package:laundry_app/services/order_processing_service.dart';
 import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:laundry_app/services/order_tab_selection_service.dart';
+import 'package:laundry_app/services/printing_service.dart';
 import 'package:laundry_app/services/qrscan_data_service.dart';
 import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:laundry_app/services/service_steps_service.dart';
@@ -40,6 +41,7 @@ void main() async {
         Provider(create: (_) => LaundryHeaderOptionsService()),
         Provider(create: (_) => QRScanDataService()),
         Provider(create: (_) => OrderProcessingService()),
+        Provider(create: (_) => PrintingService()),
         ChangeNotifierProvider(create: (_) => ServicesOptionService()),
         ChangeNotifierProvider(create: (_) => LaundryLeftTabNavService()),
         ChangeNotifierProvider(create: (_) => QuickDropoffService()),
