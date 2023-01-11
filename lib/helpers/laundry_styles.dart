@@ -8,9 +8,14 @@ class LaundryStyles {
   static const double lgIconSize = 80;
   static const double xlgIconSize = 100;
 
-  static double smallPadding = 10;
-  static double mediumPadding = 30;
-  static double largePadding = 30;
+  static const double smallPadding = 10;
+  static const double mediumPadding = 30;
+  static const double largePadding = 30;
+
+  static const EdgeInsets smallPaddingStyle = EdgeInsets.all(smallPadding);
+  static const EdgeInsets mediumPaddingStyle = EdgeInsets.all(mediumPadding);
+  static const EdgeInsets largePaddingStyle = EdgeInsets.all(largePadding);
+
 
   static double smallMargin = 5;
   static double mediumMargin = 10;
@@ -137,5 +142,6 @@ class LaundryStyles {
     fontWeight: FontWeight.bold, 
     color: Colors.white
   );
+
 
 }

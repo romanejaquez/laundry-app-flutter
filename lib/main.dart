@@ -26,6 +26,7 @@ import 'package:laundry_app/services/quickdropoff_service.dart';
 import 'package:laundry_app/services/service_steps_service.dart';
 import 'package:laundry_app/services/services_option_service.dart';
 import 'package:laundry_app/services/side_panel_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -34,6 +35,15 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await checkPerm();
+  Map<Permission, PermissionStatus> statuses = await [
+      Permission.bluetooth,
+      Permission.bluetoothScan,
+      Permission.bluetoothConnect,
+      Permission.bluetoothAdvertise,
+      Permission.location,
+    ].request();
 
   runApp(
     MultiProvider(
@@ -54,6 +64,18 @@ void main() async {
       child: const LaundryApp()
     )
   );
+}
+
+Future<void> checkPerm() async {    
+  var status = await Permission.bluetooth.status;
+  if (status.isDenied) {
+  
+    await Permission.bluetooth.request();
+  }
+
+  if (await Permission.bluetooth.status.isPermanentlyDenied) {
+    openAppSettings();
+  }
 }
 
 class LaundryApp extends StatelessWidget {

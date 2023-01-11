@@ -21,7 +21,7 @@ class _ServiceStepAnimationState extends State<ServiceStepAnimation> with Single
     super.initState();
 
     ctrl = AnimationController(vsync: this,
-      duration: const Duration(milliseconds: 750)
+      duration: const Duration(milliseconds: 500)
     )..forward();
   }
 

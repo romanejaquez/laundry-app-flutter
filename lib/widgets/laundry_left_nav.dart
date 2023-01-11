@@ -17,9 +17,9 @@ class LaundryLeftNav extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(LaundryStyles.mediumPadding),
-            child: const Icon(
+            child: Icon(
               LaundryIcons.logo, 
               color: Colors.white, 
               size: LaundryStyles.mediumIconSize

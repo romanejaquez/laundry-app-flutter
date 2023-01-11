@@ -5,7 +5,6 @@ import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
 import 'package:laundry_app/services/printing_service.dart';
-import 'package:laundry_app/widgets/side_panel_toggle.dart';
 import 'package:provider/provider.dart';
 
 class LaundryHeader extends StatelessWidget {
@@ -44,7 +43,6 @@ class LaundryHeader extends StatelessWidget {
                       case LaundryHeaderActions.settings:
                         break;
                       case LaundryHeaderActions.wifi:
-                        context.read<PrintingService>().printImageBluetooth();
                         break;
                     }
                   },
