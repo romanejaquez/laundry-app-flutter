@@ -11,6 +11,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Row(
@@ -24,10 +25,7 @@ class MainPage extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              color: Colors.white,
-                              child: child
-                            ),
+                            child: child,
                           ),
                         ],
                       )

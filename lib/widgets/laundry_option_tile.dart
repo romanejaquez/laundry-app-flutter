@@ -37,6 +37,7 @@ class _LaundryOptionTileState extends State<LaundryOptionTile> {
       margin: const EdgeInsets.all(10),
       child: Material(
         clipBehavior: Clip.antiAlias,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(LaundryStyles.mediumBorderRadius),
         child: InkWell(
           onTap: () {
@@ -45,9 +46,9 @@ class _LaundryOptionTileState extends State<LaundryOptionTile> {
           splashColor: LaundryAppColors.darkBlue,
           highlightColor: LaundryAppColors.mainBlue,
           child: Container(
-            padding: EdgeInsets.all(LaundryStyles.largePadding),
+            padding: const EdgeInsets.all(LaundryStyles.largePadding),
             decoration: BoxDecoration(
-              color: widget.isSelected ? LaundryAppColors.mainBlue : LaundryAppColors.mainBlue.withOpacity(0.05),
+              color: widget.isSelected ? LaundryAppColors.mainBlue : LaundryAppColors.mainBlue.withOpacity(0.1),
               borderRadius: BorderRadius.circular(LaundryStyles.mediumBorderRadius)
             ),
             child: Column(

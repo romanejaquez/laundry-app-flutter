@@ -22,7 +22,7 @@ class LandingPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: SizedBox(
-          width: MediaQuery.of(context).size.width - (MediaQuery.of(context).size.width * 0.25),
+          width: MediaQuery.of(context).size.width > 500 ? 400 : MediaQuery.of(context).size.width - (MediaQuery.of(context).size.width * 0.25),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,

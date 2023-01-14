@@ -15,51 +15,48 @@ class LaundryHeader extends StatelessWidget {
 
     LaundryHeaderOptionsService optionsService = context.read<LaundryHeaderOptionsService>();
     
-    return Container(
-      color: Colors.white,
-      child: Row(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 20, top: 15),
-            child: Text('Wave Cleaners',
-              style: LaundryStyles.headerTitleStyle
-            )
-          ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                //const SidePanelToggle(),
-                SizedBox(width: LaundryStyles.smallGapSize),
-                ...optionsService.allOptions.map((o) {
-                return GestureDetector(
-                  onTap: () {
-                    switch(o.action) {
-                      case LaundryHeaderActions.exit:
-                        GoRouter.of(Utils.rootNavigatorKey.currentContext!).go('/landing');
-                        break;
-                      case LaundryHeaderActions.back:
-                        break;
-                      case LaundryHeaderActions.settings:
-                        break;
-                      case LaundryHeaderActions.wifi:
-                        break;
-                    }
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 65,
-                    height: 65,
-                    color: o.bgColor,
-                    child: Icon(o.icon, color: o.iconColor)
-                  ),
-                );
-              }).toList()
-              ],
-            ),
+    return Row(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 20, top: 15),
+          child: Text('Wave Cleaners',
+            style: LaundryStyles.headerTitleStyle
           )
-        ],
-      )
+        ),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              //const SidePanelToggle(),
+              SizedBox(width: LaundryStyles.smallGapSize),
+              ...optionsService.allOptions.map((o) {
+              return GestureDetector(
+                onTap: () {
+                  switch(o.action) {
+                    case LaundryHeaderActions.exit:
+                      GoRouter.of(Utils.rootNavigatorKey.currentContext!).go('/landing');
+                      break;
+                    case LaundryHeaderActions.back:
+                      break;
+                    case LaundryHeaderActions.settings:
+                      break;
+                    case LaundryHeaderActions.wifi:
+                      break;
+                  }
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 65,
+                  height: 65,
+                  color: o.bgColor,
+                  child: Icon(o.icon, color: o.iconColor)
+                ),
+              );
+            }).toList()
+            ],
+          ),
+        )
+      ],
     );
   }
 }

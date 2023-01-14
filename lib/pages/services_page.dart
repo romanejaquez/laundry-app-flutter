@@ -63,8 +63,7 @@ class _ServicesPageState extends State<ServicesPage> {
                             stepService.setPageController(ctrl);
                             return PageView(
                               controller: ctrl,
-                              physics: stepService.canGoToNextStep() ? 
-                                const NeverScrollableScrollPhysics() : null,
+                              physics: const NeverScrollableScrollPhysics(),
                               children: stepService.steps.map((s) => s.stepView).toList(),
                             );
                           },
