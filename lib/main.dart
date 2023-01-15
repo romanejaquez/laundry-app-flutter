@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +22,7 @@ import 'package:laundry_app/services/garment_options_service.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
 import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
 import 'package:laundry_app/services/laundry_theme_service.dart';
+import 'package:laundry_app/services/order_completion_service.dart';
 import 'package:laundry_app/services/order_processing_service.dart';
 import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:laundry_app/services/order_tab_selection_service.dart';
@@ -65,6 +68,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => OrderReceivedNotificationService()),
         ChangeNotifierProvider(create: (_) => LaundryThemeService()),
         ChangeNotifierProvider(create: (_) => AmountGarmentServicesSelection()),
+        ChangeNotifierProvider(create: (_) => OrderCompletionService()),
       ],
       child: const LaundryApp()
     )
@@ -190,6 +194,8 @@ class LaundryApp extends StatelessWidget {
             LaundryStyles.setTheme(service.currentTheme);
 
             context.read<AmountGarmentServicesSelection>().setContext(context);
+            context.read<ServiceStepsService>().setContext(context);
+
             return child!;
           },
         );

@@ -52,6 +52,7 @@ dependencies:
     path: ../
   qr_flutter: ^4.0.0
   permission_handler: ^10.2.0
+  rive: ^0.10.1
 
 dev_dependencies:
   flutter_test:
@@ -76,8 +77,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  #assets:
-  #  - assets/imgs/
+  assets:
+    - assets/imgs/
+    - assets/anims/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -43,7 +43,9 @@ class ServiceStepButtons extends StatelessWidget {
                         label: 'Start Over',
                         color: LaundryAppColors.successGreen,
                         icon: Icons.start_rounded,
-                        onPressed: () {},
+                        onPressed: () {
+                          stepService.startOver();
+                        },
                       ) : 
                       LaundryActionButton(
                         label: 'Next Step',

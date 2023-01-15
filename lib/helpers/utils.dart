@@ -15,6 +15,11 @@ import 'package:laundry_app/pages/service_steps/service_step1.dart';
 import 'package:laundry_app/pages/service_steps/service_step2.dart';
 import 'package:laundry_app/pages/service_steps/service_step3.dart';
 import 'package:laundry_app/pages/service_steps/service_step4.dart';
+import 'package:laundry_app/services/amount_garment_services_selection.dart';
+import 'package:laundry_app/services/garment_options_service.dart';
+import 'package:laundry_app/services/order_completion_service.dart';
+import 'package:laundry_app/services/services_option_service.dart';
+import 'package:provider/provider.dart';
 
 class Utils {
   static final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -43,27 +48,31 @@ class Utils {
     ];
   }
 
-  static List<ServiceStep> getServiceSteps() {
+  static List<ServiceStep> getServiceSteps(BuildContext context) {
     return [
       ServiceStep(
         stepIndex: 0, 
         isComplete: false, 
-        stepView: const ServiceStep1()
+        stepView: const ServiceStep1(),
+        service: context.read<ServicesOptionService>()
       ),
       ServiceStep(
         stepIndex: 1, 
         isComplete: false, 
-        stepView: const ServiceStep2()
+        stepView: const ServiceStep2(),
+        service: context.read<GarmentOptionsService>()
       ),
       ServiceStep(
         stepIndex: 2, 
         isComplete: false, 
-        stepView: const ServiceStep3()
+        stepView: const ServiceStep3(),
+        service: context.read<AmountGarmentServicesSelection>()
       ),
       ServiceStep(
         stepIndex: 3, 
         isComplete: false, 
-        stepView: const ServiceStep4()
+        stepView: const ServiceStep4(),
+        service: context.read<OrderCompletionService>()
       )
     ];
   }

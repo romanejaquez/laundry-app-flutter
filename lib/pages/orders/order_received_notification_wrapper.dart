@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:laundry_app/pages/orders/order_received_notification_panel.dart';
 import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:provider/provider.dart';
 

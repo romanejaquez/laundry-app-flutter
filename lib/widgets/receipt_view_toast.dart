@@ -5,6 +5,7 @@ import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/printing_service.dart';
 import 'package:laundry_app/widgets/laundry_action_button.dart';
+import 'package:laundry_app/widgets/printing_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -66,8 +67,17 @@ class ReceiptViewToast extends StatelessWidget {
                   color: LaundryAppColors.successGreen,
                   icon: Icons.print,
                   onPressed: () {
-                    context.read<PrintingService>().printImageBluetooth();
-                    //GoRouter.of(Utils.rootNavigatorKey.currentContext!).pop();
+                    //context.read<PrintingService>().printImageBluetooth();
+                    GoRouter.of(Utils.rootNavigatorKey.currentContext!).pop();
+                    showDialog(
+                      barrierColor: Colors.black.withOpacity(0.5),
+                      useSafeArea: true,
+                      
+                      useRootNavigator: true,
+                      barrierDismissible: false,
+                      context: context, builder: (context) {
+                        return PrintingDialog();
+                      });
                   },
                 ),
               ],

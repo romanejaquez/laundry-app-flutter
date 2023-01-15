@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:laundry_app/helpers/context_mixin.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/models/service_step.dart';
 import 'package:laundry_app/services/base_service.dart';
 
-class ServiceStepsService extends ChangeNotifier {
+class ServiceStepsService extends ChangeNotifier with BaseContext {
 
   BaseService? baseService;
   List<ServiceStep> steps = [];
   ServiceStep? currentStep;
   PageController? pageController;
-  
-  ServiceStepsService() {
-    steps = Utils.getServiceSteps();
+
+
+  @override
+  void setContext(BuildContext c) {
+    context = c;
+    steps = Utils.getServiceSteps(context);
     currentStep = steps.first;
   }
 
@@ -65,5 +69,17 @@ class ServiceStepsService extends ChangeNotifier {
 
   bool isLastStep() {
     return currentStep!.stepIndex == steps.length - 1;
+  }
+
+  void startOver() {
+    
+    steps.forEach((element) {
+      element.isComplete = false;
+      element.service.resetAll();
+    });
+
+    pageController!.jumpToPage(0);
+    currentStep = steps.first;
+    notifyListeners();
   }
 }
