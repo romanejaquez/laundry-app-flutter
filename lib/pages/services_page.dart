@@ -27,8 +27,10 @@ class _ServicesPageState extends State<ServicesPage> {
   @override
   void initState() {
     super.initState();
+
+    var stepService = context.read<ServiceStepsService>();
     ctrl = PageController(
-      initialPage: 0
+      initialPage: stepService.currentStep != null ? stepService.currentStep!.stepIndex : 0
     );
   }
   
