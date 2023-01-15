@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/firebase_options.dart';
+import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/pages/landing_page.dart';
 import 'package:laundry_app/pages/main_page.dart';
@@ -14,9 +15,11 @@ import 'package:laundry_app/pages/quick_dropoff_page.dart';
 import 'package:laundry_app/pages/services_page.dart';
 import 'package:laundry_app/pages/settings_page.dart';
 import 'package:laundry_app/pages/splash_page.dart';
+import 'package:laundry_app/services/amount_garment_services_selection.dart';
 import 'package:laundry_app/services/garment_options_service.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
 import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
+import 'package:laundry_app/services/laundry_theme_service.dart';
 import 'package:laundry_app/services/order_processing_service.dart';
 import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:laundry_app/services/order_tab_selection_service.dart';
@@ -60,6 +63,8 @@ void main() async {
         ChangeNotifierProvider(create: (_) => GarmentOptionsService()),
         ChangeNotifierProvider(create: (_) => SidePanelService()),
         ChangeNotifierProvider(create: (_) => OrderReceivedNotificationService()),
+        ChangeNotifierProvider(create: (_) => LaundryThemeService()),
+        ChangeNotifierProvider(create: (_) => AmountGarmentServicesSelection()),
       ],
       child: const LaundryApp()
     )
@@ -178,6 +183,17 @@ class LaundryApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: "Laundry App",
+      builder: (BuildContext context, Widget? child) {
+        return Consumer<LaundryThemeService>(
+          
+          builder: (context, service, c) {
+            LaundryStyles.setTheme(service.currentTheme);
+
+            context.read<AmountGarmentServicesSelection>().setContext(context);
+            return child!;
+          },
+        );
+      },
       routeInformationProvider: _router.routeInformationProvider,
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/laundry_header_actions.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
+import 'package:laundry_app/helpers/laundry_theme.dart';
 import 'package:laundry_app/helpers/utils.dart';
 import 'package:laundry_app/services/laundry_header_options_service.dart';
+import 'package:laundry_app/services/laundry_theme_service.dart';
 import 'package:laundry_app/services/printing_service.dart';
 import 'package:provider/provider.dart';
 
@@ -41,6 +43,7 @@ class LaundryHeader extends StatelessWidget {
                     case LaundryHeaderActions.settings:
                       break;
                     case LaundryHeaderActions.wifi:
+                      context.read<LaundryThemeService>().toggleTheme();
                       break;
                   }
                 },

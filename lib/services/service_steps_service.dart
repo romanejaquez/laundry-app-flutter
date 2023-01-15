@@ -62,4 +62,8 @@ class ServiceStepsService extends ChangeNotifier {
   void setPageController(PageController ctrl) {
     pageController = ctrl;
   }
+
+  bool isLastStep() {
+    return currentStep!.stepIndex == steps.length - 1;
+  }
 }

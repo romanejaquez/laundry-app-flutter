@@ -20,12 +20,12 @@ class ServiceStep2 extends StatelessWidget {
 
         return Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(
                 left: LaundryStyles.largePadding,
                 top: LaundryStyles.mediumPadding
               ),
-              child: const Text('Select the Garment',
+              child: Text('Select the Garment',
                 style: LaundryStyles.header2TitleStyle
               ),
             ),

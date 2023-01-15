@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
+import 'package:laundry_app/helpers/laundry_theme.dart';
 
 class LaundryStyles {
+
+  static late LaundryThemeData theme;
+  static double serviceIconContainer = 80;
+
+  static void setTheme(LaundryThemeData t) {
+    theme = t;
+    reloadCalculatedStyles();
+  }
+
+  static void reloadCalculatedStyles() {
+    selectedTabDecoration = BoxDecoration(
+      color: LaundryStyles.theme.tabBackgroundSelected,
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(30),
+        bottomLeft: Radius.circular(30)
+      )
+    );
+
+    normalTabDecoration = BoxDecoration(
+      color: LaundryStyles.theme.tabBackgroundNormal,
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(30),
+        bottomLeft: Radius.circular(30)
+      )
+    );
+  }
 
   static const double smallIconSize = 40;
   static const double mediumIconSize = 60;
@@ -90,22 +117,10 @@ class LaundryStyles {
     color: LaundryAppColors.darkBlue
   );
 
+  static BoxDecoration selectedTabDecoration = const BoxDecoration();
+  static BoxDecoration normalTabDecoration = const BoxDecoration();
 
-  static const BoxDecoration selectedTabDecoration = BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(30),
-      bottomLeft: Radius.circular(30)
-    )
-  );
-
-  static const BoxDecoration normalTabDecoration = BoxDecoration(
-    color: Color.fromARGB(128, 255, 255, 255),
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(30),
-      bottomLeft: Radius.circular(30)
-    )
-  );
+  
 
   static const TextStyle headerTitleStyle = TextStyle(
     fontSize: 30, 

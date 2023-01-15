@@ -9,4 +9,6 @@ class LaundryAppColors {
   static const Color lightGray = Color(0xFFF2F2F2);
   static const Color successGreen = Color.fromARGB(128, 0, 190, 76);
   static const Color errorRed = Color.fromARGB(128, 190, 0, 0);
+  static const Color white = Colors.white;
+  static const Color darkGray = Color(0xFF000000);
 }

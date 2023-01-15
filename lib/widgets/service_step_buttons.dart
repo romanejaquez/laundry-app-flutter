@@ -14,7 +14,8 @@ class ServiceStepButtons extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            LaundryActionButton(
+            stepService.isLastStep() ? 
+            const SizedBox.shrink() : LaundryActionButton(
               label: 'Reset All',
               color: LaundryAppColors.darkBlue,
               icon: Icons.restart_alt,
@@ -26,6 +27,8 @@ class ServiceStepButtons extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                    stepService.isLastStep() ? 
+                    const SizedBox.shrink() :
                     LaundryActionButton(
                       label: 'Previous Step',
                       color: LaundryAppColors.darkBlue,
@@ -35,14 +38,21 @@ class ServiceStepButtons extends StatelessWidget {
                       } : null,
                     ),
                     const SizedBox(width: 20),
-                    LaundryActionButton(
-                      label: 'Next Step',
-                      color: LaundryAppColors.darkBlue,
-                      icon: Icons.arrow_right,
-                      onPressed: stepService.canGoToNextStep() ? () {
-                        stepService.moveToNextStep();
-                      } : null,
-                    ),
+                    stepService.isLastStep() ? 
+                      LaundryActionButton(
+                        label: 'Start Over',
+                        color: LaundryAppColors.successGreen,
+                        icon: Icons.start_rounded,
+                        onPressed: () {},
+                      ) : 
+                      LaundryActionButton(
+                        label: 'Next Step',
+                        color: LaundryAppColors.darkBlue,
+                        icon: Icons.arrow_right,
+                        onPressed: stepService.canGoToNextStep() ? () {
+                          stepService.moveToNextStep();
+                        } : null,
+                      ),
                 ],
               ),
             ),

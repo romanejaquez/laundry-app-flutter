@@ -17,11 +17,9 @@ class QuickDropoffRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    double serviceIconContainer = 80;
-
     return Container(
       margin: EdgeInsets.only(top: LaundryStyles.smallMargin, bottom: LaundryStyles.smallMargin),
-      padding: EdgeInsets.all(LaundryStyles.mediumPadding),
+      padding: const EdgeInsets.all(LaundryStyles.mediumPadding),
       decoration: BoxDecoration(
         color: LaundryAppColors.mainBlue.withOpacity(0.25),
         borderRadius: BorderRadius.circular(100)
@@ -29,8 +27,8 @@ class QuickDropoffRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: serviceIconContainer,
-            height: serviceIconContainer,
+            width: LaundryStyles.serviceIconContainer,
+            height: LaundryStyles.serviceIconContainer,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: LaundryAppColors.mainBlue,
@@ -57,8 +55,8 @@ class QuickDropoffRow extends StatelessWidget {
                             qdService.incrementAmount(order.id);
                           },
                           child: Container(
-                            width: serviceIconContainer,
-                            height: serviceIconContainer,
+                            width: LaundryStyles.serviceIconContainer,
+                            height: LaundryStyles.serviceIconContainer,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: LaundryAppColors.darkBlue.withOpacity(order.amount > 0 ? 1 : 0.25),
@@ -95,8 +93,8 @@ class QuickDropoffRow extends StatelessWidget {
                                   highlightColor: LaundryAppColors.mainBlue,
                                   splashColor: LaundryAppColors.mainBlue,
                                   child: Container(
-                                    width: serviceIconContainer,
-                                    height: serviceIconContainer,
+                                    width: LaundryStyles.serviceIconContainer,
+                                    height: LaundryStyles.serviceIconContainer,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                       color: currentOption.isSelected ? 
