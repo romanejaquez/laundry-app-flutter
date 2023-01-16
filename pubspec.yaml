@@ -80,6 +80,7 @@ flutter:
   assets:
     - assets/imgs/
     - assets/anims/
+    - assets/anims/checkmark_complete.riv
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

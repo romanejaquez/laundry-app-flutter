@@ -33,7 +33,7 @@ class _PrintingDialogState extends State<PrintingDialog> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 300,
+        width: 400,
         height: 300,
         alignment: Alignment.center,
         padding: LaundryStyles.mediumPaddingStyle,
@@ -52,7 +52,7 @@ class _PrintingDialogState extends State<PrintingDialog> {
               ),
             ),
             const SizedBox(height: 20),
-            Text("Printing...", style: LaundryStyles.headerTitleStyle)
+            Text("Printing Receipt...", style: LaundryStyles.headerTitleStyle)
           ],
         )
       ),
