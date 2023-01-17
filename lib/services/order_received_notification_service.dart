@@ -36,6 +36,7 @@ class OrderReceivedNotificationService extends ChangeNotifier {
         var latestOrder = snapshot.docs.first;
         var orderData = latestOrder.data() as Map<String, dynamic>;
         receivedOrder = OrderModel.fromJson(orderData, latestOrder.id);
+        notifyListeners();
         notifyOrderReceived();
     });
   }

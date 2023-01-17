@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/models/order_model.dart';
+import 'package:laundry_app/services/laundry_left_tab_nav_service.dart';
 import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:provider/provider.dart';
 
@@ -47,8 +48,10 @@ class OrderReceivedNotificationPanel extends StatelessWidget {
               shadowColor: Colors.transparent
             ),
             onPressed: () {
-              context.read<OrderReceivedNotificationService>().resetOrder();
+              //context.read<OrderReceivedNotificationService>().resetOrder();
               GoRouter.of(context).pop();
+              context.read<LaundryLeftTabNavService>().navigateToTab('/ordersearch');
+              
             },
             child: Padding(
               padding: const EdgeInsets.all(20),

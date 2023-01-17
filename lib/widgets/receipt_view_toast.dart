@@ -15,7 +15,7 @@ class ReceiptViewToast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var qrData = '{ "orderId": "XYZ123", "description": "some stuff", "created": "2022-12-12T05:06:00Z" }';
+    var qrData = '{ "orderId": "BX2344", "description": "some stuff", "created": "2022-12-12T05:06:00Z" }';
     
     return Container(
       decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class ReceiptViewToast extends StatelessWidget {
                   color: LaundryAppColors.successGreen,
                   icon: Icons.print,
                   onPressed: () {
-                    //context.read<PrintingService>().printImageBluetooth();
+                    context.read<PrintingService>().printImageBluetooth();
                     GoRouter.of(Utils.rootNavigatorKey.currentContext!).pop();
                     showDialog(
                       barrierColor: Colors.black.withOpacity(0.5),

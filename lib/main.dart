@@ -195,6 +195,7 @@ class LaundryApp extends StatelessWidget {
 
             context.read<AmountGarmentServicesSelection>().setContext(context);
             context.read<ServiceStepsService>().setContext(context);
+            context.read<LaundryLeftTabNavService>().setContext(context);
 
             return child!;
           },

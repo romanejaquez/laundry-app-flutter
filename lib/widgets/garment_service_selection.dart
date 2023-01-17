@@ -35,6 +35,7 @@ class GarmentServiceSelection extends StatelessWidget {
                     Container(
                       width: LaundryStyles.serviceIconContainer,
                       height: LaundryStyles.serviceIconContainer,
+                      margin: EdgeInsets.only(right: LaundryStyles.largeMargin),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: LaundryAppColors.mainBlue,
@@ -46,6 +47,34 @@ class GarmentServiceSelection extends StatelessWidget {
                         size: LaundryStyles.smallIconSize
                       ),
                     ),
+                    
+                    ClipOval(
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            service.incrementAmount(garmentOrderItem.id);
+                          },
+                          child: Container(
+                            width: LaundryStyles.serviceIconContainer,
+                            height: LaundryStyles.serviceIconContainer,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: LaundryAppColors.darkBlue.withOpacity(garmentOrderItem.amount > 0 ? 1 : 0.25),
+                              borderRadius: BorderRadius.circular(LaundryStyles.xLargeBorderRadius)
+                            ),
+                            child: Text('${garmentOrderItem.amount}', 
+                              style: const TextStyle(
+                                color: Colors.white, 
+                                fontSize: 50, 
+                                fontWeight: FontWeight.bold
+                              )
+                            )
+                          ),
+                        ),
+                      ),
+                    ),
+
                     Expanded(
                       child: ServicesPerGarment(
                         orderItem: garmentOrderItem

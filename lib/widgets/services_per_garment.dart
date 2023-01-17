@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
 import 'package:laundry_app/helpers/laundry_styles.dart';
 import 'package:laundry_app/models/garment_orderitem.dart';
+import 'package:laundry_app/services/amount_garment_services_selection.dart';
+import 'package:provider/provider.dart';
 
 class ServicesPerGarment extends StatelessWidget {
 
@@ -11,6 +13,7 @@ class ServicesPerGarment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: List.generate(orderItem.options.length, (index) {
         var currentOption = orderItem.options[index];
 
@@ -21,7 +24,8 @@ class ServicesPerGarment extends StatelessWidget {
               color: Colors.transparent,
               child: InkWell(
                 onTap: () {
-                  //qdService.selectServiceOption(order.id, currentOption);
+                  context.read<AmountGarmentServicesSelection>()
+                    .selectServiceOption(orderItem.id, currentOption);
                 },
                 highlightColor: LaundryAppColors.mainBlue,
                 splashColor: LaundryAppColors.mainBlue,

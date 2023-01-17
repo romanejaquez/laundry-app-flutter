@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 class AmountGarmentServicesSelection extends ChangeNotifier with BaseContext implements BaseService {
 
   List<GarmentOrderItem> orderItems = [];
+  int maxAmount = 10;
 
   void generateSelectedOptions() {
     
@@ -36,6 +37,30 @@ class AmountGarmentServicesSelection extends ChangeNotifier with BaseContext imp
           isSelected: false, service: s)).toList()
         )
       ).toList();
+  }
+
+  void incrementAmount(String orderId) {
+    GarmentOrderItem item = orderItems.where((o) => o.id == orderId).first;
+    item.amount++;
+    
+    if (item.amount > maxAmount) {
+      item.amount = 0;
+      item.options.forEach((element) { element.isSelected = false; });
+    }
+
+    notifyListeners();
+  }
+
+  void selectServiceOption(String id, SelectedServiceOption currentOption) {
+    GarmentOrderItem item = orderItems.where((o) => o.id == id).first;
+    SelectedServiceOption option = item.options.where((o) => o == currentOption).first;
+    option.isSelected = !option.isSelected;
+
+    notifyListeners();
+  }
+
+  bool quickDropOffItemsAvailable() {
+    return orderItems.any((q) => q.options.any((o) => o.isSelected));
   }
   
   @override

@@ -17,6 +17,7 @@ class _ServiceStep4State extends State<ServiceStep4> with SingleTickerProviderSt
 
   Artboard? _riveArtboard;
   StateMachineController? controller;
+  bool riveLoaded = false;
 
   void _onRiveInit(Artboard board) {
     var smController = StateMachineController.fromArtboard(
@@ -25,29 +26,37 @@ class _ServiceStep4State extends State<ServiceStep4> with SingleTickerProviderSt
       onStateChange: (p0, p1) {
       }
     ) as StateMachineController;
-    board.addController(smController);
+    
+      board.addController(smController);
   }
 
   @override
   void initState() {
     super.initState();
 
-    // rootBundle.load('./assets/anims/checkmark_complete.riv').then(
-    //   (data) async {
-    //     final file = RiveFile.import(data);
+    Future.delayed(const Duration(milliseconds: 300), () {
+      setState(() {
+        riveLoaded = true;
+      });
+    });
 
-    //     final artboard = file.mainArtboard;
-    //     controller =
-    //         StateMachineController.fromArtboard(artboard, 'checkmark_sm');
-    //     if (controller != null) {
-    //       _riveArtboard!.addController(controller!);
-    //     }
-    //     setState(() {
-    //        _riveArtboard = artboard;
-    //        controller!.findInput<bool>('trigger')!.value = true;
-    //     });
-    //   },
-    // );
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   rootBundle.load('./assets/anims/checkmark_complete.riv').then(
+    //     (data) async {
+    //       final file = RiveFile.import(data);
+
+    //       final artboard = file.mainArtboard;
+    //       controller =
+    //           StateMachineController.fromArtboard(artboard, 'checkmark_sm');
+    //       if (controller != null) {
+    //         _riveArtboard!.addController(controller!);
+    //       }
+    //       setState(() {
+    //         _riveArtboard = artboard;
+    //       });
+    //     },
+    //   );
+    // });
   }
 
   @override
@@ -56,6 +65,7 @@ class _ServiceStep4State extends State<ServiceStep4> with SingleTickerProviderSt
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+         !riveLoaded ? const SizedBox(width: 150, height: 150) :
           SizedBox(
             width: 150,
             height: 150,
@@ -69,10 +79,10 @@ class _ServiceStep4State extends State<ServiceStep4> with SingleTickerProviderSt
           //   width: 150,
           //   height: 150,
           //   child: Rive(
-          //   Rive
-          //   artboard: _riveArtboard!.instance(),
-          //   fit: BoxFit.contain
-          // ),) : const SizedBox(width: 150, height: 150),
+          //       artboard: _riveArtboard!.instance(),
+          //       fit: BoxFit.contain
+          //     )
+          //   ) : const SizedBox(width: 150, height: 150),
           Text('Order', style: LaundryStyles.mediumNormalBlueTextStyle),
           Text('#BX2344', style: LaundryStyles.xLargeBoldBlueTextStyle),
           Text('is complete!', style: LaundryStyles.normalBlueTextStyle),

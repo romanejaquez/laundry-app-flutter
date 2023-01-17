@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:laundry_app/pages/orders/order_received_notification_panel.dart';
 import 'package:laundry_app/services/order_received_notification_service.dart';
 import 'package:provider/provider.dart';
 
@@ -30,25 +31,25 @@ class _OrderReceivedNotificationWrapperState extends State<OrderReceivedNotifica
   Widget build(BuildContext context) {
     return Consumer<OrderReceivedNotificationService>(
       builder: (context, ornService, child) {
-        // return ornService.orderReceived ?
+        return ornService.orderReceived ?
 
-        //   Builder(builder: ((context) {
-        //     notificationTimer = Timer(Duration.zero, () {
-        //       showModalBottomSheet(
-        //         context: context,
-        //         backgroundColor: Colors.transparent,
-        //         isScrollControlled: true,
-        //         builder: (context) {
-        //           return OrderReceivedNotificationPanel(
-        //             order: ornService.receivedOrder!
-        //           );
-        //         }
-        //       );
-        //     });
+          Builder(builder: ((context) {
+            notificationTimer = Timer(Duration.zero, () {
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: Colors.transparent,
+                isScrollControlled: true,
+                builder: (context) {
+                  return OrderReceivedNotificationPanel(
+                    order: ornService.receivedOrder!
+                  );
+                }
+              );
+            });
 
-        //     return const SizedBox.shrink();
-        //   })) :
-        return const SizedBox.shrink();
+            return const SizedBox.shrink();
+          })) :
+        const SizedBox.shrink();
       }
     );
   }

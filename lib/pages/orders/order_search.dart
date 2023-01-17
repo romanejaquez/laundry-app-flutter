@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/helpers/laundry_colors.dart';
+import 'package:laundry_app/helpers/laundry_styles.dart';
+import 'package:laundry_app/services/order_received_notification_service.dart';
+import 'package:laundry_app/widgets/order_row.dart';
+import 'package:provider/provider.dart';
 
 class OrderSearch extends StatefulWidget {
   const OrderSearch({super.key});
@@ -84,7 +88,26 @@ class _OrderSearchState extends State<OrderSearch> {
           ),
         ),
         const SizedBox(height: 10),
-        Spacer()
+        Expanded(
+          child: Consumer<OrderReceivedNotificationService>(
+            builder: (context, service, child) {
+              return service.orderReceived ? ListView.builder(
+                itemCount: 1,
+                itemBuilder: ((context, index) {
+                  return OrderRow(order: service.receivedOrder!);
+                }),
+              ) : Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.search, size: LaundryStyles.lgIconSize, color: LaundryAppColors.darkBlue),
+                    Text('No orders at the moment', style: LaundryStyles.mediumNormalBlueTextStyle)
+                  ],
+                ),
+              );
+            }
+          ),
+        )
       ],
     );
   }
