@@ -8,6 +8,9 @@ The application is developed in Flutter, and uses Firebase to leverage some of i
 - The app is meant to use a Brother P-Touch Cube printer to print receipts (see [Flutter Brother](https://github.com/CodeMinion/another_brother) for more info on integrating Brother printers with your Flutter apps)
 - The app is meant to be responsive, since it will be used both as a QRCode scanner (ran on a mobile device) and as the main POS system (on the Mini-PC). Still working through its responsiveness.
 
+Coming Soon:
+- Integrate Payments via Stripe Firebase Extension
+
 - Follow me on [Twitter](https://twitter.com/drcoderz)
 - Subscribe to my [YouTube Channel](https://www.youtube.com/@romanjustcodes)
 
