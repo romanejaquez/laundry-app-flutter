@@ -10,6 +10,7 @@ The application is developed in Flutter, and uses Firebase to leverage some of i
 
 Coming Soon:
 - Integrate Payments via Stripe Firebase Extension
+- NFC integration to receive payments via NFC-enabled devices
 
 - Follow me on [Twitter](https://twitter.com/drcoderz)
 - Subscribe to my [YouTube Channel](https://www.youtube.com/@romanjustcodes)
